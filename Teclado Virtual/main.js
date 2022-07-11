@@ -67,16 +67,16 @@ renderKeyboard();
 
 function renderKeyboard(){
   const keyboardContainer = document.getElementById("keyboard-container");
-  let empty = `<div class=""key-empty></div>`
+  let empty = `<div class="key-empty"></div>`
 
   const layers = keys.map(layer => {
     return layer.map(key => {
       if(key[0] === "SHIFT") {
-        return `<button class="key key-shift">${key[0]}</button>`
+        return `<button class="key key-shift ${shift ? "activated" : ""}">${key[0]}</button>`
       }
 
       if(key[0] === "MAYUS") {
-        return `<button class="key key-mayus">${key[0]}</button>`
+        return `<button class="key key-mayus  ${mayus ? "activated" : ""}">${key[0]}</button>`
       }
 
       if(key[0] === "SPACE") {
@@ -114,9 +114,25 @@ function renderKeyboard(){
       if(current) {
         if(key.textContent === "SHIFT"){
           shift = !shift;
-          renderKeyboard()
+        }else if(key.textContent === "MAYUS"){
+          mayus = !mayus;
+        }else if(key.textContent === ""){
+          current.value += " ";
+        }else {
+          current.value += key.textContent.trim();
+          if(shift){
+            shift = false;
+          }
         }
+          renderKeyboard();
+          current.focus();
       }
     })
   })
 }
+
+document.querySelectorAll("input").forEach(input => {
+  input.addEventListener("focusin", e => {
+    current = e.target;
+  });
+})

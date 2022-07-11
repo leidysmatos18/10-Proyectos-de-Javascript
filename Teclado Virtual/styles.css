@@ -1,0 +1,68 @@
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#keyboard-container{
+  display: flex;
+  flex-wrap: wrap;
+  width: 42.75rem;
+  gap: 5px;
+  margin: 100px auto;
+}
+
+.layer {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  width: 100%;
+}
+
+.key {
+  background-color: #222;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.key-normal {
+  width: 3.125rem;
+  height: 4.375rem;
+} 
+
+.key-mayus{
+  width: 7.5rem;
+  height: 4.375rem;
+}
+
+.key-shift{
+  width: 5rem;
+  height: 4.375rem;
+}
+
+.key-space{
+  width: 25rem;
+  height: 4.375rem;
+}
+
+.key:hover {
+  background-color: #555;
+}
+
+.key-empty {
+  width: 1.5625rem;
+  height: 4.375rem;
+  background-color: transparent;
+  color: white;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activated {
+  outline: greenyellow solid 2px;
+}
